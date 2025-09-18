@@ -1,0 +1,137 @@
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0a0f2c;
+    color: #f8f9fa;
+    line-height: 1.6;
+    text-align: center;
+    overflow-x: hidden;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem;
+  }
+  
+  /* Header */
+  header {
+    margin-bottom: 2rem;
+  }
+  
+  header h1 {
+    font-size: 2.5rem;
+    color: #00b4d8;
+    animation: fadeInDown 1s ease-in-out;
+  }
+  
+  header p {
+    font-size: 1.1rem;
+    color: #a8dadc;
+  }
+  
+  /* Form & Sections */
+  form {
+    background-color: #162447;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+  }
+  
+  input,
+  select {
+    width: 100%;
+    padding: 0.75rem;
+    margin: 0.75rem 0;
+    border-radius: 6px;
+    border: 1px solid #00b4d8;
+    background-color: #0f1e4b;
+    color: white;
+  }
+  
+  input:focus,
+  select:focus {
+    border-color: #48cae4;
+    outline: none;
+  }
+  
+  button {
+    background: linear-gradient(90deg, #00b4d8, #48cae4);
+    color: #0a0f2c;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 180, 216, 0.4);
+  }
+  
+  /* Cards / Sections */
+  .form-section,
+  .results-section,
+  .about-section {
+    background-color: #1b2a4b;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 15px rgba(72, 202, 228, 0.2);
+  }
+  
+  h2 {
+    color: #48cae4;
+    margin-bottom: 1rem;
+  }
+  
+  /* Results */
+  #recommendationResults li {
+    background-color: #0f1e4b;
+    border-left: 4px solid #00b4d8;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+  
+  /* Footer */
+  footer {
+    margin-top: 3rem;
+    color: #a8dadc;
+  }
+  
+  /* Logo */
+  .wizard-logo {
+    width: 80px;
+    margin-bottom: 1rem;
+    animation: pulseGlow 3s infinite ease-in-out;
+  }
+  
+  /* Animations */
+  @keyframes pulseGlow {
+    0%, 100% {
+      filter: drop-shadow(0 0 5px #00b4d8);
+    }
+    50% {
+      filter: drop-shadow(0 0 15px #48cae4);
+    }
+  }
+  
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

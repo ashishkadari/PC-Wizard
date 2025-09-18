@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PC Wizard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/styles.css" />
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="logo-container">
+        <img src="{{ url_for('static', filename='img/wizard.gif') }}" alt="Wizard Logo" class="wizard-logo" />
+      </div>
+      <h1>PC Wizard</h1>
+      <p>Build your ultimate PC. Guided by magic ⚡</p>
+    </header>
+
+    <section class="form-section">
+      <h2>Your Preferences</h2>
+      <form id="recommendForm">
+        <label for="totalprice">Total Budget (£):</label>
+        <input type="number" id="totalprice" name="totalprice" required />
+
+        <label for="type">PC Type:</label>
+        <select id="type" name="type" required>
+          <option value="gaming">Gaming</option>
+          <option value="workstation">Workstation</option>
+        </select>
+
+        <button type="submit">Get Recommendations</button>
+      </form>
+    </section>
+
+    <section class="results-section" id="resultsSection" style="display: none;">
+      <h2>Recommended Build</h2>
+      <div id="recommendationResults"></div>
+    </section>
+
+    <section class="about-section">
+      <h2>About PC Wizard</h2>
+      <p>We help you build the perfect PC using expert algorithms and a dash of magic.</p>
+    </section>
+
+    <footer>
+      <p>Made with ❤️ by Ashish Kadari</p>
+    </footer>
+  </div>
+
+  <script>
+    const resultsSection = document.getElementById('resultsSection');
+    const recommendationResults = document.getElementById('recommendationResults');
+
+    document.getElementById('recommendForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const totalprice = document.getElementById('totalprice').value;
+      const type = document.getElementById('type').value;
+
+      fetch('/recommend', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `totalprice=${totalprice}&type=${type}`
+      })
+      .then(response => response.json())
+      .then(data => {
+        recommendationResults.innerHTML = "";  // Clear old content
+
+        // If there's an error in the response
+        if (data.error) {
+          recommendationResults.innerHTML = `<p>${data.error}</p>`;
+        } else {
+          // Otherwise render the components
+          let htmlContent = "<ul>";
+          for (const component in data.components) {
+            const componentInfo = data.components[component];
+            htmlContent += `
+              <li>
+                <strong>${componentInfo.Name}</strong><br>
+                Price: £${componentInfo.Price}<br>
+                <a href="https://www.cclonline.com${componentInfo.Url}" target="_blank">View More</a>
+              </li>`;
+          }
+          htmlContent += "</ul>";
+          recommendationResults.innerHTML = htmlContent;
+        }
+
+        // Show the results section after the content is added
+        resultsSection.style.display = 'block';
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert("Error fetching recommendations.");
+      });
+    });
+  </script>
+</body>
+
+</html>
