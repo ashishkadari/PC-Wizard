@@ -1,7 +1,7 @@
 import json
 import sqlite3
 from database import Database
-from backend.Tests.dataexample import data # Assuming dataexample.py contains the sample data
+from main.Tests.dataexample import data # Assuming dataexample.py contains the sample data
 # Step 1: Load sample data
 # This should be replaced with the actual data fetching logic
 # from cclonline import cclonlinec
