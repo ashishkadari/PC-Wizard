@@ -6,7 +6,7 @@
 
 Recursive build generation: Backtracking algorithm explores possible component combinations, pruning incompatible or over-budget paths in real time.
 
-Compatibility enforcement: Validates CPU–motherboard socket matching, RAM type alignment (DDR4 vs DDR5), and PSU power requirements during the build process.
+Compatibility enforcement: Validates CPU–motherboard socket matching, RAM type alignment (DDR4 vs DDR5)
 
 Web scraping pipeline: Collects live product data (names, specs, prices, links) from a UK retailer using Requests/Selenium + XPath, with pagination handling and fallback scraping.
 
