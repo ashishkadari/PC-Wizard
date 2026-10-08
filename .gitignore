@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+env/
+venv/
+.venv/
+
+# Databases (created by the app / test scripts)
+*.db
+
+# Test and editor clutter
+.pytest_cache/
+.vscode/
+.idea/
